@@ -20,6 +20,7 @@ public class LoginPage {
     By forgotPassword = By.linkText("Forgot password?");
     By createAccount = By.linkText("Create an account");
 
+
     public void enterUserName(WebDriver driver, String userName){
         try{
             driver.findElement(userNameField).sendKeys(userName);
