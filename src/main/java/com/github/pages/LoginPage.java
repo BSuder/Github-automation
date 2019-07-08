@@ -3,16 +3,15 @@ package com.github.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+
 import org.testng.Assert;
 
 public class LoginPage {
 
-    General general;
+    WebDriver driver;
 
     public LoginPage(WebDriver driver){
-        this.general = new General(driver);
-        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
     By userNameField = By.id("login_field");

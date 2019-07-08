@@ -5,7 +5,7 @@ import com.github.pages.MainPage
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
-import org.openqa.selenium.support.PageFactory
+
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -19,14 +19,12 @@ class LoginPageTest extends Specification{
 
     def setupSpec(){
 
-        mainPage = new MainPage(driver)
         loginPage = new LoginPage(driver)
 
-        ChromeOptions chrome_options = new ChromeOptions()
-        chrome_options.addArguments("window-size=1366,768", "--no-sandbox")
-        driver = new ChromeDriver(chrome_options)
 
-//        PageFactory.initElements(driver, this)
+        ChromeOptions chrome_options = new ChromeOptions()
+        chrome_options.addArguments("window-size=1366,768", "--no-sandbox", "headless")
+        driver = new ChromeDriver(chrome_options)
     }
 
     def cleanupSpec(){
@@ -36,6 +34,7 @@ class LoginPageTest extends Specification{
     def "Open main page"(){
         when: ""
             driver.get(pageUrl)
+            mainPage = new MainPage(driver)
         then: ""
             assert mainPage.isLoad()
     }
